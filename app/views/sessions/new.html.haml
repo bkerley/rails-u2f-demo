@@ -1,2 +1,9 @@
-%h1 Sessions#new
-%p Find me in app/views/sessions/new.html.haml
+= form_tag sessions_path do
+  .username
+    = label_tag :username
+    = text_field_tag :username
+  .password
+    = label_tag :password
+    = password_field_tag :password
+  .commit
+    = submit_tag 'Log in'
