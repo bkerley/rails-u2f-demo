@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'authentications/new'
+
   resource :sessions
   resource :users
   resource :registrations
