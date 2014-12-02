@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'u2f'
 gem 'haml-rails'
+gem 'high_voltage'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0.rc1'
