@@ -1,0 +1,10 @@
+- require 'pp'
+
+%dl
+  %dt base url
+  %dd= request.base_url
+  %dt user
+  %dd
+    = session[:user_id]
+    %br
+    = User.find(session[:user_id]).pretty_inspect

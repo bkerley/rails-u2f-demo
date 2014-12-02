@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  get 'registrations/new'
+
   resource :sessions
   resource :users
+
+  root to: 'high_voltage/pages#show', id: 'dashboard'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
