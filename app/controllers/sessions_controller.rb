@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
       try(:authenticate, params[:password])
 
     if @user
+      session[:user_id] = @user.id
       redirect_to root_path
     else
       redirect_to action: 'new'
