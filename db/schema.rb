@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202002208) do
+ActiveRecord::Schema.define(version: 20141202015609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "registrations", force: true do |t|
+    t.string   "key_handle"
+    t.integer  "user_id"
+    t.string   "public_key"
+    t.text     "certificate"
+    t.integer  "counter"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "registrations", ["user_id"], name: "index_registrations_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username"
@@ -23,4 +35,5 @@ ActiveRecord::Schema.define(version: 20141202002208) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "registrations", "users"
 end
