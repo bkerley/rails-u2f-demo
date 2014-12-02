@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  get 'registrations/new'
-
   resource :sessions
   resource :users
+  resource :registrations
 
   root to: 'high_voltage/pages#show', id: 'dashboard'
 

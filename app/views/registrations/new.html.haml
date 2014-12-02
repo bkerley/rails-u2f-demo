@@ -1,2 +1,15 @@
-%h1 Registrations#new
-%p Find me in app/views/registrations/new.html.haml
+= form_tag registrations_path do
+  = text_area_tag :response
+  = submit_tag 'register u2f'
+%pre#console
+%script{src: 'chrome-extension://pfboblefjcgdjicmnffhdgionmgcdmne/u2f-api.js'}
+%script#reg_req{type: 'text/json'}
+  = @registration_requests.to_json.html_safe
+:coffeescript
+  regReq = JSON.parse $('#reg_req').text()
+  u2f.register regReq, [], (resp) ->
+    if resp.errorCode
+      return $('#console').append(resp.errorCode)
+    
+    $('textarea').val JSON.stringify resp
+
