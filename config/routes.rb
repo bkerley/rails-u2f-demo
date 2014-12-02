@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get 'authentications/new'
 
   resource :sessions
   resource :users
   resource :registrations
+  resource :authentications
 
   root to: 'high_voltage/pages#show', id: 'dashboard'
 

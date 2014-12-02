@@ -19,7 +19,7 @@ class RegistrationsController < ApplicationController
                    end
 
     r = Registration.create(
-                            user_id: params[:user_id],
+                            user_id: session[:user_id],
                             certificate: registration.certificate,
                             key_handle: registration.key_handle,
                             public_key: registration.public_key,

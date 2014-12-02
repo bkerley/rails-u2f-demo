@@ -1,2 +1,14 @@
-%h1 Authentications#new
-%p Find me in app/views/authentications/new.html.haml
+= form_tag authentications_path do
+  = text_area_tag :response
+  = submit_tag 'sign u2f'
+%pre#console
+%script{src: 'chrome-extension://pfboblefjcgdjicmnffhdgionmgcdmne/u2f-api.js'}
+%script#sign_req{type: 'text/json'}
+  = @sign_requests.to_json.html_safe
+:coffeescript
+  signReq = JSON.parse $('#sign_req').text()
+  u2f.sign signReq, (resp) ->
+    if resp.errorCode
+      return $('#console').append(resp.errorCode)
+
+    $('textarea').val JSON.stringify resp
